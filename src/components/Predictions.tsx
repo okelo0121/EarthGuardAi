@@ -50,13 +50,13 @@ export default function Predictions() {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-white mb-2">AI Predictions & Forecasts</h2>
-        <p className="text-slate-300">Machine learning models predicting environmental events</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">AI Predictions & Forecasts</h2>
+        <p className="text-sm sm:text-base text-slate-300">Machine learning models predicting environmental events</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {predictions.length === 0 ? (
           <div className="col-span-full bg-white/10 backdrop-blur-lg rounded-lg p-12 border border-white/20 text-center">
             <TrendingUp className="w-16 h-16 text-slate-400 mx-auto mb-4" />
@@ -69,7 +69,7 @@ export default function Predictions() {
             return (
               <div
                 key={prediction.id}
-                className={`bg-gradient-to-br backdrop-blur-lg rounded-lg p-6 border ${getImpactColor(
+                className={`bg-gradient-to-br backdrop-blur-lg rounded-lg p-4 sm:p-6 border ${getImpactColor(
                   prediction.impact_level
                 )}`}
               >

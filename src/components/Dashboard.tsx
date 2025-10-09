@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Map, BarChart3, AlertTriangle, Users, TrendingUp, MessageSquare } from 'lucide-react';
+import { Map, BarChart3, AlertTriangle, Users, TrendingUp, MessageSquare, Menu, X } from 'lucide-react';
 import MapView from './MapView';
 import Analytics from './Analytics';
 import Predictions from './Predictions';
@@ -15,6 +15,7 @@ type ViewType = 'map' | 'analytics' | 'predictions' | 'community' | 'chat' | 'pr
 
 export default function Dashboard({ session }: DashboardProps) {
   const [activeView, setActiveView] = useState<ViewType>('map');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems = [
     { id: 'map' as ViewType, label: 'Live Map', icon: Map },
@@ -25,16 +26,37 @@ export default function Dashboard({ session }: DashboardProps) {
     { id: 'profile' as ViewType, label: 'My Impact', icon: AlertTriangle },
   ];
 
+  const handleNavClick = (viewId: ViewType) => {
+    setActiveView(viewId);
+    setMobileMenuOpen(false);
+  };
+
   return (
-    <div className="flex h-[calc(100vh-4rem)]">
-      <nav className="w-64 bg-slate-900/50 backdrop-blur-lg border-r border-white/10 p-4">
+    <div className="flex flex-col lg:flex-row h-[calc(100vh-4rem)]">
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="lg:hidden fixed bottom-4 right-4 z-50 p-4 bg-emerald-500 text-white rounded-full shadow-lg"
+      >
+        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
+
+      <nav className={`
+        fixed lg:relative inset-0 lg:inset-auto
+        w-full lg:w-64
+        bg-slate-900/95 lg:bg-slate-900/50 backdrop-blur-lg
+        border-r border-white/10
+        p-4 lg:p-4
+        z-40
+        transform transition-transform duration-300 ease-in-out
+        ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+      `}>
         <div className="space-y-2">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
               <button
                 key={item.id}
-                onClick={() => setActiveView(item.id)}
+                onClick={() => handleNavClick(item.id)}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
                   activeView === item.id
                     ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/30'
@@ -48,7 +70,7 @@ export default function Dashboard({ session }: DashboardProps) {
           })}
         </div>
 
-        <div className="mt-8 p-4 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-lg border border-emerald-500/30">
+        <div className="mt-8 p-4 bg-gradient-to-br from-emerald-500/20 to-teal-500/20 rounded-lg border border-emerald-500/30 hidden lg:block">
           <h3 className="text-sm font-semibold text-emerald-300 mb-2">Quick Stats</h3>
           <div className="space-y-2 text-xs text-slate-300">
             <div className="flex justify-between">

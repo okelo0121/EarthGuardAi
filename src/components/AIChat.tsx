@@ -75,17 +75,17 @@ export default function AIChat() {
   ];
 
   return (
-    <div className="h-full flex flex-col p-6">
-      <div className="mb-6">
-        <h2 className="text-3xl font-bold text-white mb-2 flex items-center gap-3">
-          <Sparkles className="w-8 h-8 text-emerald-400" />
+    <div className="h-full flex flex-col p-4 sm:p-6">
+      <div className="mb-4 sm:mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2 flex items-center gap-2 sm:gap-3">
+          <Sparkles className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-400" />
           AI Environmental Analyst
         </h2>
-        <p className="text-slate-300">Ask questions about environmental data and get AI-powered insights</p>
+        <p className="text-sm sm:text-base text-slate-300">Ask questions about environmental data and get AI-powered insights</p>
       </div>
 
       <div className="flex-1 bg-white/10 backdrop-blur-lg rounded-lg border border-white/20 overflow-hidden flex flex-col">
-        <div className="flex-1 overflow-y-auto p-6 space-y-4">
+        <div className="flex-1 overflow-y-auto p-3 sm:p-6 space-y-3 sm:space-y-4">
           {messages.map((message, index) => (
             <div
               key={index}
@@ -97,7 +97,7 @@ export default function AIChat() {
                 </div>
               )}
               <div
-                className={`max-w-2xl rounded-lg p-4 ${
+                className={`max-w-2xl rounded-lg p-3 sm:p-4 ${
                   message.role === 'user'
                     ? 'bg-emerald-500 text-white'
                     : 'bg-white/10 text-slate-100'

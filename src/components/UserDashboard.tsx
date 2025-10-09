@@ -73,14 +73,14 @@ export default function UserDashboard({ session }: UserDashboardProps) {
   }
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 sm:p-6 space-y-4 sm:space-y-6">
       <div>
-        <h2 className="text-3xl font-bold text-white mb-2">My Impact Dashboard</h2>
-        <p className="text-slate-300">Track your contributions to environmental protection</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">My Impact Dashboard</h2>
+        <p className="text-sm sm:text-base text-slate-300">Track your contributions to environmental protection</p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-gradient-to-br from-emerald-500/20 to-teal-500/20 backdrop-blur-lg rounded-lg p-6 border border-emerald-500/30">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+        <div className="bg-gradient-to-br from-emerald-500/20 to-teal-500/20 backdrop-blur-lg rounded-lg p-4 sm:p-6 border border-emerald-500/30">
           <div className="flex items-center justify-between mb-2">
             <Award className="w-10 h-10 text-emerald-400" />
           </div>
@@ -89,7 +89,7 @@ export default function UserDashboard({ session }: UserDashboardProps) {
           <p className="text-xs text-emerald-300 mt-2">Keep monitoring to earn more!</p>
         </div>
 
-        <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-lg rounded-lg p-6 border border-blue-500/30">
+        <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 backdrop-blur-lg rounded-lg p-4 sm:p-6 border border-blue-500/30">
           <div className="flex items-center justify-between mb-2">
             <Activity className="w-10 h-10 text-blue-400" />
           </div>
@@ -98,7 +98,7 @@ export default function UserDashboard({ session }: UserDashboardProps) {
           <p className="text-xs text-blue-300 mt-2">Reports and verifications</p>
         </div>
 
-        <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-lg rounded-lg p-6 border border-purple-500/30">
+        <div className="bg-gradient-to-br from-purple-500/20 to-pink-500/20 backdrop-blur-lg rounded-lg p-4 sm:p-6 border border-purple-500/30">
           <div className="flex items-center justify-between mb-2">
             <TrendingUp className="w-10 h-10 text-purple-400" />
           </div>
@@ -108,12 +108,12 @@ export default function UserDashboard({ session }: UserDashboardProps) {
         </div>
       </div>
 
-      <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6 border border-white/20">
-        <h3 className="text-xl font-semibold text-white mb-4 flex items-center gap-2">
-          <Award className="w-6 h-6 text-emerald-400" />
+      <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4 sm:p-6 border border-white/20">
+        <h3 className="text-lg sm:text-xl font-semibold text-white mb-4 flex items-center gap-2">
+          <Award className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400" />
           Achievements
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
           {achievements.map((achievement) => {
             const Icon = achievement.icon;
             return (
@@ -143,8 +143,8 @@ export default function UserDashboard({ session }: UserDashboardProps) {
         </div>
       </div>
 
-      <div className="bg-white/10 backdrop-blur-lg rounded-lg p-6 border border-white/20">
-        <h3 className="text-xl font-semibold text-white mb-4">Recent Activity</h3>
+      <div className="bg-white/10 backdrop-blur-lg rounded-lg p-4 sm:p-6 border border-white/20">
+        <h3 className="text-lg sm:text-xl font-semibold text-white mb-4">Recent Activity</h3>
         {actions.length === 0 ? (
           <div className="text-center py-8 text-slate-400">
             <Activity className="w-12 h-12 mx-auto mb-3 opacity-50" />
