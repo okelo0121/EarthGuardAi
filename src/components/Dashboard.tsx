@@ -32,24 +32,45 @@ export default function Dashboard({ session }: DashboardProps) {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-[calc(100vh-4rem)]">
-      <button
-        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="lg:hidden fixed bottom-4 right-4 z-50 p-4 bg-emerald-500 text-white rounded-full shadow-lg"
-      >
-        {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-      </button>
+    <div className="flex flex-col lg:flex-row h-[calc(100vh-4rem)] relative">
+      <div className="lg:hidden fixed top-20 left-4 z-50">
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="p-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg shadow-xl hover:shadow-emerald-500/50 transition-all flex items-center gap-2"
+        >
+          <Menu className="w-5 h-5" />
+          <span className="text-sm font-semibold">Menu</span>
+        </button>
+      </div>
+
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 lg:hidden"
+          onClick={() => setMobileMenuOpen(false)}
+        />
+      )}
 
       <nav className={`
-        fixed lg:relative inset-0 lg:inset-auto
-        w-full lg:w-64
-        bg-slate-900/95 lg:bg-slate-900/50 backdrop-blur-lg
+        fixed lg:relative top-0 left-0 bottom-0
+        w-80 lg:w-64
+        bg-slate-900/98 lg:bg-slate-900/50 backdrop-blur-lg
         border-r border-white/10
         p-4 lg:p-4
-        z-40
+        z-50 lg:z-auto
         transform transition-transform duration-300 ease-in-out
         ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
+        overflow-y-auto
       `}>
+        <div className="flex items-center justify-between mb-6 lg:hidden border-b border-white/10 pb-4">
+          <h3 className="text-xl font-bold text-white">Navigation</h3>
+          <button
+            onClick={() => setMobileMenuOpen(false)}
+            className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+          >
+            <X className="w-6 h-6 text-slate-300" />
+          </button>
+        </div>
+
         <div className="space-y-2">
           {navItems.map((item) => {
             const Icon = item.icon;
